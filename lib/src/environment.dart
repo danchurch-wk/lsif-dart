@@ -56,7 +56,16 @@ Future<Environment> buildEnvironment(Config config) async {
     if (config.input == null || !dir.contains(config.input)) {
       var version =
           path.basename(path.dirname(dir)).replaceFirst("${name}-", "");
-      var packageInfo = new PackageInfo(name, Version.parse(version));
+
+      var packageInfo;
+
+      try {
+        packageInfo = new PackageInfo(name, Version.parse(version));
+      } catch (e) {
+        packageInfo = PackageInfo(name, null);
+        // continue;
+      }
+      
       var package =
           await buildCustomPackageFromFileSystem(config, packageInfo, dir);
       customPackages.add(package);

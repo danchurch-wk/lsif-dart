@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'package:hello/src/other.dart';
+// import 'package:hello/src/other.dart';
 
 /** Just hello world! */
 String greetingWords = 'Hello world!';
@@ -10,7 +10,7 @@ void main() {
   content.text = greetingWords;
   var config = new Config._(output: "some output", format: OutputFormat.LSIF);
   print(config);
-  print(otherVar);
+  // print(otherVar);
 }
 
 /**

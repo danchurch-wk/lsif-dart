@@ -30,6 +30,19 @@ class Parser {
           new ASTVisitor(
               environment, absolutePath, parsedData)); // TODO or relative?
     }
+
+/**
+await Future.wait(environment.package.absolutePaths.map((absolutePath) {
+      _logger.info("Parsing file $absolutePath");
+      // TODO or relative?
+      AnalysisContext context = collection.contextFor(absolutePath);
+      return context.currentSession.getResolvedUnit(absolutePath).then((something) {
+        something.unit.accept(new ASTVisitor(environment, absolutePath, parsedData));
+      });
+    }));
+// 19:17:47.590 -> 19:32:55.169
+ */
+
     return parsedData;
   }
 }
