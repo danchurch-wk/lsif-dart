@@ -169,7 +169,10 @@ class ASTVisitor extends GeneralizingAstVisitor {
                 contextName: contextName,
                 offset: declarationToken.offset,
                 end: declarationToken.end,
-                docstring: decl.documentationComment,
+                docstring: decl.documentationComment
+                    ?.split('\n')
+                    ?.map((i) => '$i\\n')
+                    ?.join(),
                 kind: kind);
 
             //print("Saved");
